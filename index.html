@@ -35,8 +35,8 @@
 			["5","7","8","1","6","3"];
 		
 		var buses = [
-		['b1',"http://maps.google.com/mapfiles/ms/icons/blue-dot.png","6","50"]
-		,['b2',"http://maps.google.com/mapfiles/ms/icons/red-dot.png","7","10"]];
+		['b1',"http://maps.google.com/mapfiles/ms/icons/blue-dot.png"]
+		,['b2',"http://maps.google.com/mapfiles/ms/icons/red-dot.png"]];
 
 		var busMarker = [];
 
@@ -49,8 +49,8 @@
 		}
 
 		function setLocations(map,BusStops) {
-			AddMarker(map,BusStops,"7","21",buses[0][1]);
-			AddMarker(map,BusStops,"7","22",buses[1][1]);
+			AddMarker(map,BusStops,"7","43",buses[0][1]);
+			AddMarker(map,BusStops,"7","44",buses[1][1]);
 		}
 		
 		function AddMarker(map,BusStops,hr,min,busIc){
@@ -59,7 +59,7 @@
 			if (millis < 0) {
 				millis += 86400000; 
 			}
-			var myAmot = setInterval(function(){amot(map,BusStops,busIc)}, millis);
+			var myAmot = setTimeout(function(){amot(map,BusStops,busIc)}, millis);
 		}
 	
 		function amot(map,BusStops,busIc){
@@ -69,8 +69,32 @@
 				icon: busIc
 			});
 			busMarker.push(marker);
-		
+			var s1 = setTimeout(function(){moveBusTo1(map,marker)}, 5000);
 		}
+		
+		function moveBusTo1( map, marker ) {
+			marker.setPosition( new google.maps.LatLng( BusStops[1][1], BusStops[1][2] ) );
+			map.panTo( new google.maps.LatLng( BusStops[1][1], BusStops[1][2] ) );
+			var s2 = setTimeout(function(){moveBusTo2(map,marker)}, 7000);
+		};
+		
+		function moveBusTo2( map, marker ) {
+			marker.setPosition( new google.maps.LatLng( BusStops[2][1], BusStops[2][2] ) );
+			map.panTo( new google.maps.LatLng( BusStops[2][1], BusStops[2][2] ) );
+			var s3 = setTimeout(function(){moveBusTo3(map,marker)}, 5000);
+		};
+		
+		function moveBusTo3( map, marker ) {
+			marker.setPosition( new google.maps.LatLng( BusStops[3][1], BusStops[3][2] ) );
+			map.panTo( new google.maps.LatLng( BusStops[3][1], BusStops[3][2] ) );
+			var s4 = setTimeout(function(){moveBusTo4(map,marker)}, 5000);
+		};
+		
+		function moveBusTo4( map, marker ) {
+			marker.setPosition( new google.maps.LatLng( BusStops[4][1], BusStops[4][2] ) );
+			map.panTo( new google.maps.LatLng( BusStops[4][1], BusStops[4][2] ) );
+			//var s4 = setTimeout(function(){moveBusTo4(map,marker)}, 5000);
+		};
 
 		function smos(map) {
 			setLocations(map,BusStops);
