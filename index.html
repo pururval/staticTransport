@@ -4,7 +4,7 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <title>Simple markers</title>
-    <style>
+      <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
       #map {
@@ -91,7 +91,6 @@
       ['65', 42.992871, -78.792277], //service road
     ];
 
-
 		// var busgap =
 		// 	["5","7","8","1","6","3"];
 
@@ -108,19 +107,57 @@
 				center: {lat: 43.000153, lng: -78.789152},
 				zoom: 15
 			});
-			smos(googleMap);
+			// smos(googleMap);
+
+////////
+// Define the symbol, using one of the predefined paths ('CIRCLE')
+// supplied by the Google Maps JavaScript API.
+var lineSymbol = {
+path: google.maps.SymbolPath.CIRCLE,
+scale: 8,
+strokeColor: '#393'
+};
+
+// Create the polyline and add the symbol to it via the 'icons' property.
+var line = new google.maps.Polyline({
+path: [{lat: 43.001946, lng: -78.785752}, {lat: 43.002120, lng: -78.793448}, {lat: 43.000153, lng: -78.789152}],
+icons: [{
+icon: lineSymbol,
+offset: '100%'
+}],
+map: googleMap
+});
+
+animateCircle(line);
+//////
 		}
 
+//////
+// Use the DOM setInterval() function to change the offset of the symbol
+      // at fixed intervals.
+      function animateCircle(line) {
+          var count = 0;
+          window.setInterval(function() {
+            count = (count + 1) % 200;
+
+            var icons = line.get('icons');
+            icons[0].offset = (count / 2) + '%';
+            line.set('icons', icons);
+        }, 20);
+      }
+//////
+
+
 		function setLocations(map,BusStops) {
-			AddMarker(map,BusStops,"9","30",buses[0][1]);
-			AddMarker(map,BusStops,"9","31",buses[1][1]);
+			AddMarker(map,BusStops,"1","31",buses[0][1]);
+			AddMarker(map,BusStops,"1","32",buses[1][1]);
 		}
 
 		function AddMarker(map,BusStops,hr,min,busIc){
 			var now = new Date();
 			var millis = new Date(now.getFullYear(), now.getMonth(), now.getDate(), hr, min, now.getSeconds(), now.getMilliseconds()) - now;
 			if (millis < 0) {
-				millis += 50000;
+				millis += 864.00000;
 			}
 			var myAmot = setTimeout(function(){amot(map,BusStops,busIc)}, millis);
 		}
@@ -133,7 +170,6 @@
 			});
 			busMarker.push(marker);
 			// var s1 = setTimeout(function(){moveBusTo1(map,marker)}, 500);
-
       var s1 = setTimeout(function(){moveBus(map,marker)}, 500);
 
 		}
