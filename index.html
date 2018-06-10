@@ -3,7 +3,7 @@
   <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
-    <title>StaticTransport</title>
+    <title>Simple markers</title>
     <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
@@ -19,25 +19,74 @@
     </style>
   </head>
   <body>
+
     <div id="map"></div>
     <script>
+		var googleMap;
+		var BusStops = [
+		  ['1', 43.008204, -78.785880],
+		  ['2', 43.001946, -78.785752],
+		  ['3', 43.002120, -78.793448],
+		  ['4', 43.000153, -78.789152],
+		  ['5', 42.992871, -78.792277],
+		];
+		
+		var busgap = 
+			["5","7","8","1","6","3"];
+		
+		var buses = [
+		['b1',"http://maps.google.com/mapfiles/ms/icons/blue-dot.png","6","50"]
+		,['b2',"http://maps.google.com/mapfiles/ms/icons/red-dot.png","7","10"]];
 
-      function initMap() {
-        var myLatLng = {lat: 43.008204, lng: -78.785880};
-        var cent = {lat: 43.003201, lng:  -78.786168};
+		var busMarker = [];
 
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 15,
-          center:cent  // center of map (Capen)
-        });
+		function initMap() {
+			googleMap = new google.maps.Map(document.getElementById('map'), {
+				center: {lat: 43.000153, lng: -78.789152},
+				zoom: 15
+			});
+			smos(googleMap);	  
+		}
 
-        var marker = new google.maps.Marker({
-          position: myLatLng,
-          map: map,
-          title: 'Hello World!'
-        });
-      }
-    </script>
+		function setLocations(map,BusStops) {
+			AddMarker(map,BusStops,"7","21",buses[0][1]);
+			AddMarker(map,BusStops,"7","22",buses[1][1]);
+		}
+		
+		function AddMarker(map,BusStops,hr,min,busIc){
+			var now = new Date();
+			var millis = new Date(now.getFullYear(), now.getMonth(), now.getDate(), hr, min, 0, 0) - now;
+			if (millis < 0) {
+				millis += 86400000; 
+			}
+			var myAmot = setInterval(function(){amot(map,BusStops,busIc)}, millis);
+		}
+	
+		function amot(map,BusStops,busIc){
+			var marker = new google.maps.Marker({
+				position: new google.maps.LatLng(BusStops[0][1],BusStops[0][2]),
+				map: map,
+				icon: busIc
+			});
+			busMarker.push(marker);
+		
+		}
+
+		function smos(map) {
+			setLocations(map,BusStops);
+			for (var i = 0; i < busMarker.length; i++) {
+				busMarker[i].setMap(map);
+			}
+		}
+
+		function clearLocations() {
+			smos(null);
+		}
+
+		function showLocations() {
+			smos(googleMap);
+		}
+	</script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfzLK-C_jik22yCDp6oOQg4nnbkC2DYA0&callback=initMap">
     </script>
