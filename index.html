@@ -57,7 +57,7 @@
 			var now = new Date();
 			var millis = new Date(now.getFullYear(), now.getMonth(), now.getDate(), hr, min, now.getSeconds(), now.getMilliseconds()) - now;
 			if (millis < 0) {
-				millis += 86400000;
+				millis += 50000;
 			}
 			var myAmot = setTimeout(function(){amot(map,BusStops,busIc)}, millis);
 		}
@@ -93,8 +93,12 @@
 		function moveBusTo4( map, marker ) {
 			marker.setPosition( new google.maps.LatLng( BusStops[4][1], BusStops[4][2] ) );
 			// map.panTo( new google.maps.LatLng( BusStops[4][1], BusStops[4][2] ) );
-			var s4 = setTimeout(function(){moveBusTo1(map,marker)}, 500);
+			var s5 = setTimeout(function(){moveBusTo1(map,marker)}, 500);
 		};
+
+    function moveBus(map, marker){
+
+    }
 
 		function smos(map) {   // set marker on spot
 			setLocations(map,BusStops);
