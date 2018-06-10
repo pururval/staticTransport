@@ -25,7 +25,9 @@
       function initMap() {
         var myLatLng = {lat: 43.008204, lng: -78.785880};
         var cent = {lat: 43.003201, lng:  -78.786168};
-
+        var times = [6.50,6.55,6.57,7.05,7.06,7.12];
+        var d = new Date();
+        
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 15,
           center:cent  // center of map (Capen)
