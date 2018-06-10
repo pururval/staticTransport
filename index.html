@@ -86,10 +86,92 @@
       ['60', 43.002149, -78.785912],
       ['61', 43.002049, -78.785912],
       ['62', 43.001946, -78.785752], //lee loop
-      ['63', 43.002120, -78.793448], //governors
-      ['64', 43.000153, -78.789152], //flint
-      ['65', 42.992871, -78.792277], //service road
+      ['63', 43.002055, -78.785570],
+      ['64', 43.002141, -78.785855],
+      ['65', 43.002314, -78.785876],
+      ['66', 43.002589, -78.785876],
+      ['67', 43.002895, -78.785908],
+      ['68', 43.003138, -78.785951],
+      ['69', 43.003169, -78.786155],
+      ['70', 43.003193, -78.786391],
+      ['71', 43.003169, -78.786595],
+      ['72', 43.003185, -78.786777],
+      ['73', 43.003193, -78.786927],
+      ['74', 43.003193, -78.787077],
+      ['75', 43.003193, -78.787367],
+      ['76', 43.003193, -78.787603],
+      ['77', 43.003201, -78.787839],
+      ['78', 43.003138, -78.788236],
+      ['79', 43.003162, -78.788504],
+      ['80', 43.003162, -78.788815],
+      ['81', 43.003178, -78.789148],
+      ['82', 43.003170, -78.789427],
+      ['83', 43.003170, -78.789642],
+      ['84', 43.003162, -78.789857],
+      ['85', 43.003170, -78.790039],
+      ['86', 43.003178, -78.790232],
+      ['87', 43.003178, -78.790414],
+      ['88', 43.003194, -78.790693],
+      ['89', 43.003178, -78.791337],
+      ['90', 43.003139, -78.791959],
+      ['91', 43.003155, -78.792399],
+      ['92', 43.003147, -78.792860],
+      ['93', 43.003147, -78.793182],
+      ['94', 43.003092, -78.793407],
+      ['95', 43.002810, -78.793407],
+      ['96', 43.002669, -78.793407],
+      ['97', 43.002387, -78.793426],
+      ['98', 43.002214, -78.793437],
+    ['99', 43.002120, -78.793448], //governors
+      ['100', 43.002002, -78.793448],
+      ['101', 43.001782, -78.793459],
+      ['102', 43.001523, -78.793555],
+      ['103', 43.001390, -78.793694],
+        ['104', 43.001390, -78.793694],
+        ['105', 43.001154, -78.793973],
+        ['106', 43.000981, -78.794096],
+        ['107', 43.000840, -78.794155],
+        ['108', 43.000644, -78.794171],
+        ['109', 43.000495, -78.794155],
+        ['110', 43.000346, -78.794139],
+        ['111', 43.000181, -78.794144],
+      ['112',   42.999953, -78.794128],
+      ['113',   42.999796, -78.794144],
+        ['114', 42.999553, -78.794139],
+        ['115', 42.999294, -78.794144],
+        ['116', 42.999114, -78.794160],
+        ['117', 42.998871, -78.794155],
+        ['118', 42.998871, -78.794155],
+        ['119', 42.998588, -78.794155],
+        ['120', 42.998392, -78.794160],
+        ['121', 42.998243, -78.794155],
+        ['122', 42.998023, -78.794117],
+        ['123', 42.998031, -78.793886],
+        ['124', 42.998055, -78.793591],
+        ['125', 42.998071, -78.793307],
+        ['126', 42.998071, -78.793307],
+        ['127', 42.998056, -78.792663],
+        ['128', 42.998048, -78.792325],
+        ['129', 42.998048, -78.791880],
+        ['130', 42.998064, -78.791542],
+        ['131', 42.998103, -78.791215],
+        ['132', 42.998064, -78.790759],
+        ['133', 42.998056, -78.790346],
+        ['134', 42.998064, -78.789933],
+        ['135', 42.998064, -78.789692],
+        ['136', 42.998064, -78.789418],
+        ['137', 42.998064, -78.789091],
+        ['138', 42.998307, -78.789161],
+        ['139', 42.998558, -78.789145],
+        ['140', 42.998833, -78.789183],
+        ['141', 42.999123, -78.789178],
+        ['142', 42.999523, -78.789173],
+        ['143', 42.999719, -78.789168],
+        ['144', 43.000119, -78.788953],
+      ['145', 43.000153, -78.789152], //flint
+      // ['146', 42.992871, -78.792277], //service road
     ];
+
 
 		// var busgap =
 		// 	["5","7","8","1","6","3"];
@@ -108,6 +190,41 @@
 				zoom: 15
 			});
 			smos(googleMap);
+
+// // //////
+// // Define the symbol, using one of the predefined paths ('CIRCLE')
+// // supplied by the Google Maps JavaScript API.
+// var circ = {
+// path: google.maps.SymbolPath.CIRCLE,
+// scale: 8,
+// strokeColor: '#393'
+// };
+//
+// // // Create the polyline and add the symbol to it via the 'icons' property.
+// var line = new google.maps.Polyline({
+// path: [{lat: 43.001946, lng: -78.785752}, {lat: 43.002120, lng: -78.793448}, {lat: 43.000153, lng: -78.789152}],
+//
+// icons: [{
+// icon: circ,
+// offset: '100%',
+// }],
+// map: googleMap
+// });
+//
+// // Use the DOM setInterval() function to change the offset of the symbol at fixed intervals.
+// function animateCircle(line) {
+//     var count = 0;
+//     window.setInterval(function() {
+//       count = (count + 1) % 200;
+//
+//       var icons = line.get('icons');
+//       icons[0].offset = (count / 2) + '%';
+//       line.set('icons', icons);
+//   }, 500);
+// }
+//
+// animateCircle(line);
+// //////
 		}
 
 
@@ -138,44 +255,44 @@
 
 		}
 
-		function moveBusTo1( map, marker ) {
-			marker.setPosition( new google.maps.LatLng( BusStops[1][1], BusStops[1][2] ) );
-			// map.panTo( new google.maps.LatLng( BusStops[1][1], BusStops[1][2] ) );
-			var s2 = setTimeout(function(){moveBusTo2(map,marker)}, 500);
-		};
+		// function moveBusTo1( map, marker ) {
+		// 	marker.setPosition( new google.maps.LatLng( BusStops[1][1], BusStops[1][2] ) );
+		// 	// map.panTo( new google.maps.LatLng( BusStops[1][1], BusStops[1][2] ) );
+		// 	var s2 = setTimeout(function(){moveBusTo2(map,marker)}, 500);
+		// };
+    //
+		// function moveBusTo2( map, marker ) {
+		// 	marker.setPosition( new google.maps.LatLng( BusStops[2][1], BusStops[2][2] ) );
+		// 	// map.panTo( new google.maps.LatLng( BusStops[2][1], BusStops[2][2] ) );
+		// 	var s3 = setTimeout(function(){moveBusTo3(map,marker)}, 500);
+		// };
+    //
+		// function moveBusTo3( map, marker ) {
+		// 	marker.setPosition( new google.maps.LatLng( BusStops[3][1], BusStops[3][2] ) );
+		// 	// map.panTo( new google.maps.LatLng( BusStops[3][1], BusStops[3][2] ) );
+		// 	var s4 = setTimeout(function(){moveBusTo4(map,marker)}, 500);
+		// };
+    //
+		// function moveBusTo4( map, marker ) {
+		// 	marker.setPosition( new google.maps.LatLng( BusStops[4][1], BusStops[4][2] ) );
+		// 	// map.panTo( new google.maps.LatLng( BusStops[4][1], BusStops[4][2] ) );
+		// 	var s5 = setTimeout(function(){moveBusTo5(map,marker)}, 500);
+		// };
+    //
+    // function moveBusTo5( map, marker ) {
+		// 	marker.setPosition( new google.maps.LatLng( BusStops[0][1], BusStops[0][2] ) );
+		// 	// map.panTo( new google.maps.LatLng( BusStops[4][1], BusStops[4][2] ) );
+		// 	var s5 = setTimeout(function(){moveBusTo1(map,marker)}, 500);
+		// };
 
-		function moveBusTo2( map, marker ) {
-			marker.setPosition( new google.maps.LatLng( BusStops[2][1], BusStops[2][2] ) );
-			// map.panTo( new google.maps.LatLng( BusStops[2][1], BusStops[2][2] ) );
-			var s3 = setTimeout(function(){moveBusTo3(map,marker)}, 500);
-		};
-
-		function moveBusTo3( map, marker ) {
-			marker.setPosition( new google.maps.LatLng( BusStops[3][1], BusStops[3][2] ) );
-			// map.panTo( new google.maps.LatLng( BusStops[3][1], BusStops[3][2] ) );
-			var s4 = setTimeout(function(){moveBusTo4(map,marker)}, 500);
-		};
-
-		function moveBusTo4( map, marker ) {
-			marker.setPosition( new google.maps.LatLng( BusStops[4][1], BusStops[4][2] ) );
-			// map.panTo( new google.maps.LatLng( BusStops[4][1], BusStops[4][2] ) );
-			var s5 = setTimeout(function(){moveBusTo5(map,marker)}, 500);
-		};
-
-    function moveBusTo5( map, marker ) {
-			marker.setPosition( new google.maps.LatLng( BusStops[0][1], BusStops[0][2] ) );
-			// map.panTo( new google.maps.LatLng( BusStops[4][1], BusStops[4][2] ) );
-			var s5 = setTimeout(function(){moveBusTo1(map,marker)}, 500);
-		};
-
-    // function moveBus(map, marker){
-    //   marker.setPosition( new google.maps.LatLng( BusStops[i][1], BusStops[i][2] ) );
-    //   i+=1;
-    //   if(i>62){
-    //     i=0;
-    //   }
-    //   var s5 = setTimeout(function(){moveBus(map,marker)}, 500);
-    // }
+    function moveBus(map, marker){
+      marker.setPosition( new google.maps.LatLng( BusStops[i][1], BusStops[i][2] ) );
+      i+=1;
+      if(i>146){
+        i=0;
+      }
+      var s5 = setTimeout(function(){moveBus(map,marker)}, 100);
+    }
 
 
 		function smos(map) {   // set marker on spot
