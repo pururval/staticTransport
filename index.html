@@ -30,10 +30,10 @@
 		  ['4', 43.000153, -78.789152],
 		  ['5', 42.992871, -78.792277],
 		];
-		
-		var busgap = 
-			["5","7","8","1","6","3"];
-		
+
+		// var busgap =
+		// 	["5","7","8","1","6","3"];
+
 		var buses = [
 		['b1',"http://maps.google.com/mapfiles/ms/icons/blue-dot.png"]
 		,['b2',"http://maps.google.com/mapfiles/ms/icons/red-dot.png"]];
@@ -45,58 +45,58 @@
 				center: {lat: 43.000153, lng: -78.789152},
 				zoom: 15
 			});
-			smos(googleMap);	  
+			smos(googleMap);
 		}
 
 		function setLocations(map,BusStops) {
-			AddMarker(map,BusStops,"7","43",buses[0][1]);
-			AddMarker(map,BusStops,"7","44",buses[1][1]);
+			AddMarker(map,BusStops,"9","30",buses[0][1]);
+			AddMarker(map,BusStops,"9","31",buses[1][1]);
 		}
-		
+
 		function AddMarker(map,BusStops,hr,min,busIc){
 			var now = new Date();
-			var millis = new Date(now.getFullYear(), now.getMonth(), now.getDate(), hr, min, 0, 0) - now;
+			var millis = new Date(now.getFullYear(), now.getMonth(), now.getDate(), hr, min, now.getSeconds(), now.getMilliseconds()) - now;
 			if (millis < 0) {
-				millis += 86400000; 
+				millis += 86400000;
 			}
 			var myAmot = setTimeout(function(){amot(map,BusStops,busIc)}, millis);
 		}
-	
-		function amot(map,BusStops,busIc){
+
+		function amot(map,BusStops,busIc){    //add marker on time
 			var marker = new google.maps.Marker({
 				position: new google.maps.LatLng(BusStops[0][1],BusStops[0][2]),
 				map: map,
 				icon: busIc
 			});
 			busMarker.push(marker);
-			var s1 = setTimeout(function(){moveBusTo1(map,marker)}, 5000);
+			var s1 = setTimeout(function(){moveBusTo1(map,marker)}, 500);
 		}
-		
+
 		function moveBusTo1( map, marker ) {
 			marker.setPosition( new google.maps.LatLng( BusStops[1][1], BusStops[1][2] ) );
-			map.panTo( new google.maps.LatLng( BusStops[1][1], BusStops[1][2] ) );
-			var s2 = setTimeout(function(){moveBusTo2(map,marker)}, 7000);
-		};
-		
-		function moveBusTo2( map, marker ) {
-			marker.setPosition( new google.maps.LatLng( BusStops[2][1], BusStops[2][2] ) );
-			map.panTo( new google.maps.LatLng( BusStops[2][1], BusStops[2][2] ) );
-			var s3 = setTimeout(function(){moveBusTo3(map,marker)}, 5000);
-		};
-		
-		function moveBusTo3( map, marker ) {
-			marker.setPosition( new google.maps.LatLng( BusStops[3][1], BusStops[3][2] ) );
-			map.panTo( new google.maps.LatLng( BusStops[3][1], BusStops[3][2] ) );
-			var s4 = setTimeout(function(){moveBusTo4(map,marker)}, 5000);
-		};
-		
-		function moveBusTo4( map, marker ) {
-			marker.setPosition( new google.maps.LatLng( BusStops[4][1], BusStops[4][2] ) );
-			map.panTo( new google.maps.LatLng( BusStops[4][1], BusStops[4][2] ) );
-			//var s4 = setTimeout(function(){moveBusTo4(map,marker)}, 5000);
+			// map.panTo( new google.maps.LatLng( BusStops[1][1], BusStops[1][2] ) );
+			var s2 = setTimeout(function(){moveBusTo2(map,marker)}, 700);
 		};
 
-		function smos(map) {
+		function moveBusTo2( map, marker ) {
+			marker.setPosition( new google.maps.LatLng( BusStops[2][1], BusStops[2][2] ) );
+			// map.panTo( new google.maps.LatLng( BusStops[2][1], BusStops[2][2] ) );
+			var s3 = setTimeout(function(){moveBusTo3(map,marker)}, 500);
+		};
+
+		function moveBusTo3( map, marker ) {
+			marker.setPosition( new google.maps.LatLng( BusStops[3][1], BusStops[3][2] ) );
+			// map.panTo( new google.maps.LatLng( BusStops[3][1], BusStops[3][2] ) );
+			var s4 = setTimeout(function(){moveBusTo4(map,marker)}, 500);
+		};
+
+		function moveBusTo4( map, marker ) {
+			marker.setPosition( new google.maps.LatLng( BusStops[4][1], BusStops[4][2] ) );
+			// map.panTo( new google.maps.LatLng( BusStops[4][1], BusStops[4][2] ) );
+			var s4 = setTimeout(function(){moveBusTo1(map,marker)}, 500);
+		};
+
+		function smos(map) {   // set marker on spot
 			setLocations(map,BusStops);
 			for (var i = 0; i < busMarker.length; i++) {
 				busMarker[i].setMap(map);
