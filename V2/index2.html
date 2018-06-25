@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Simple markers</title>
+    <script src="co-ods00.js"></script>
+
+      <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+
+
+    <div id="map"></div>
+
+    <script>
+		var googleMap;
+
+
+		var buses = [
+		['b1',"http://maps.google.com/mapfiles/ms/icons/blue-dot.png"],
+		['b2',"http://maps.google.com/mapfiles/ms/icons/red-dot.png"]
+  ];
+
+    var busMarkers = [];
+    var i= 1;
+    var now = new Date();
+    var co,od;
+    var timee = now.getHours()+ "." + now.getMinutes()+ now.getSeconds() +" Time:" + " am/pm"
+    var number = now.getMinutes()+ "." +now.getSeconds();
+    // var number = now.getSeconds() + "." + (now.getMilliseconds()/10).toFixed(0);
+    // console.log(timee)
+    console.log("min.sec " +number)
+
+    // console.log("While testing with minutes and seconds, it works only during first 16 minutes of the hour due to"
+    //           +"less data and with sec and ms, the time runs quicker than the loop speed so doesnt work.")
+    function getcood(){
+      for(var j =0; j<BusStops.length ;j++){
+
+        number = now.getSeconds()
+        // + "." + (now.getMilliseconds()/10).toFixed(0);
+
+        if(number== BusStops[j][3]){
+            console.log(number+"=="+BusStops[j][3])
+            co = BusStops[j][1];
+            od = BusStops[j][2];}
+            else if(number<16){
+                // console.log(number+"=="+BusStops[j][3])
+            }else{
+              console.log(number==BusStops[j][3])
+            }
+      }
+    }
+
+
+		function initMap() {
+			googleMap = new google.maps.Map(document.getElementById('map'), {
+				center: {lat: 43.000153, lng: -78.789152},
+				zoom: 15
+			});
+
+      setInterval(function(){
+        deleteMarkers()
+
+        now = new Date();
+        console.log("sec "+now.getSeconds())
+        var change = now.getSeconds();
+
+        // if(change==10 || change==30 || change==50 ){
+        //   console.log("Marker added!")
+        //   makeMarker(googleMap,buses[0][0]);
+        // }
+        makeMarker(googleMap,buses[0][1]);
+        // makeMarker(googleMap,buses[1][1]);
+
+      }, 1000);
+		}
+
+
+//each marker will have an if conditional for a time bound during which it operates (around makeMarker method)
+//start point of all markers will be same at different times, so add certain value to the general .js
+
+		function makeMarker(map,busIc){
+          getcood();
+
+    	var marker = new google.maps.Marker({
+				position: new google.maps.LatLng(co,od),
+				map: map,
+				icon: busIc
+			});
+      busMarkers.push(marker);
+
+      setMapOnAll(googleMap);
+
+      // marker.setMap(map)
+
+		}
+
+    function setMapOnAll(map) {
+
+        for (var i = 0; i < busMarkers.length; i++) {
+          busMarkers[i].setMap(map);
+          // console.log(busMarkers);
+        }
+      }
+
+    function deleteMarkers() {
+          setMapOnAll(null);  //Removes the markers from the map, but keeps them in the array.
+          busMarkers = [];       //Deletes all markers in the array by removing references to them.
+        }
+
+	</script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfzLK-C_jik22yCDp6oOQg4nnbkC2DYA0&callback=initMap">
+    </script>
+  </body>
+</html>
