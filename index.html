@@ -57,8 +57,8 @@
 		function onTime(busMarker){
 			var d = new Date;
 			var time = d.getHours()+"."+d.getMinutes();
-			var hr = 7;
-			var mins = 30;
+			var hr = 13;
+			var mins = 50;
 			for(var bus=0;bus<busMarker.length;bus++){
 				var pm = mins;
 				var ph = hr;
@@ -69,11 +69,13 @@
 					hr+=1;
 				}
 				
-				console.log((hr+(mins+5)/100)+" to "+ (hr+(mins+7)/100));
-				if(time > (hr+(mins+5)/100 && time < (hr+(mins+7)/100))){
-					var s1 = setTimeout(function(){moveBusTo1(jeelooo)}, 500);
+				console.log(time + "--" +time > (hr+(mins+5)/100 && time < (hr+(mins+7)/100)));
+				if((time > (hr+(mins+5)/100)) && (time < (hr+(mins+7)/100))){
+					console.log((hr+(mins+5)/100)+" to "+ (hr+(mins+7)/100));
+					var s1 = setTimeout(function(){moveBusTo1(jeelooo)}, 0);
 					bus+=1;
-					jeelooo=busMarker[bus];
+					if(bus<busMarker.length)
+						jeelooo=busMarker[bus];
 				}
 				
 				mins+=5;
@@ -83,11 +85,12 @@
 					hr+=1;
 				}
 				
-				console.log((hr+(mins+2)/100) +" to "+  (hr+(mins+10)/100));
-				if(time > (hr+(mins+2)/100) && time < (hr+(mins+10)/100)){
-					var s1 = setTimeout(function(){moveBusTo2(jeelooo)}, 500);
+				if((time > (hr+(mins+2)/100)) && (time < (hr+(mins+10)/100))){
+					console.log((hr+(mins+2)/100) +" to "+  (hr+(mins+10)/100));
+					var s1 = setTimeout(function(){moveBusTo2(jeelooo)}, 0);
 					bus+=1;
-					jeelooo=busMarker[bus];
+					if(bus<busMarker.length)
+						jeelooo=busMarker[bus];
 				}
 				
 				mins+=2;
@@ -96,11 +99,13 @@
 					mins-=60;
 					hr+=1;
 				}
-				console.log((hr+(mins+8)/100) +" to "+(hr+(mins+9)/100));
-				if(time > (hr+(mins+8)/100) && time < (hr+(mins+9)/100)){
-					var s1 = setTimeout(function(){moveBusTo3(jeelooo)}, 500);
+				
+				if((time > (hr+(mins+8)/100)) && (time < (hr+(mins+9)/100))){
+					console.log((hr+(mins+8)/100) +" to "+(hr+(mins+9)/100));
+					var s1 = setTimeout(function(){moveBusTo3(jeelooo)}, 0);
 					bus+=1;
-					jeelooo=busMarker[bus];
+					if(bus<busMarker.length)
+						jeelooo=busMarker[bus];
 				}
 				
 				mins+=8;
@@ -109,11 +114,13 @@
 					mins-=60;
 					hr+=1;
 				}
-				console.log((hr+(mins+1)/100) +" to "+ (hr+(mins+7)/100));
-				if(time > (hr+(mins+1)/100) && time < (hr+(mins+7)/100)){
-					var s1 = setTimeout(function(){moveBusTo4(jeelooo)}, 500);
+				
+				if((time > (hr+(mins+1)/100)) && (time < (hr+(mins+7)/100))){
+					console.log((hr+(mins+1)/100) +" to "+ (hr+(mins+7)/100));
+					var s1 = setTimeout(function(){moveBusTo4(jeelooo)}, 0);
 					bus+=1;
-					jeelooo=busMarker[bus];
+					if(bus<busMarker.length)
+						jeelooo=busMarker[bus];
 				}
 					
 				mins+=1;
@@ -124,11 +131,13 @@
 					hr+=1;
 				}
 				
-				console.log(hr+(mins+6)/100 +" to "+  (hr+(mins+9)/100));
-				if(time > (hr+(mins+6)/100) && time < (hr+(mins+9)/100)){
-					var s1 = setTimeout(function(){moveBusTo5(jeelooo)}, 500);
+				
+				if((time > (hr+(mins+6)/100)) && (time < (hr+(mins+9)/100))){
+					console.log(hr+(mins+6)/100 +" to "+  (hr+(mins+9)/100));
+					var s1 = setTimeout(function(){moveBusTo5(jeelooo)}, 0);
 					bus+=1;
-					jeelooo=busMarker[bus];
+					if(bus<busMarker.length)
+						jeelooo=busMarker[bus];
 				}
 				
 				mins+=6;
@@ -138,11 +147,13 @@
 					hr+=1;
 				}
 				
-				console.log(hr+(mins+3)/100 +" to "+ (hr+(mins+23)/100));
-				if(time > (hr+(mins+3)/100) && time < (hr+(mins+23)/100)){
-					var s1 = setTimeout(function(){moveBusTo6(jeelooo)}, 500);
+				
+				if((time > (hr+(mins+3)/100)) && (time < (hr+(mins+23)/100))){
+					console.log(hr+(mins+3)/100 +" to "+ (hr+(mins+23)/100));
+					var s1 = setTimeout(function(){moveBusTo6(jeelooo)}, 0);
 					bus+=1;
-					jeelooo=busMarker[bus];
+					if(bus<busMarker.length)
+						jeelooo=busMarker[bus];
 				}
 				
 				mins+=3;
